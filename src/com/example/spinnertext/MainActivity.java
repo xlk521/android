@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		//这用来设计抽取数据库中的数据来填写下面的列表
+		//========================================这用来设计抽取数据库中的数据来填写下面的列表,这个的应用将在SpinnerText2中来完成
 		text = new ArrayList<String>();
 		text.add(0, "请选择");
 		text.add(1, "足球001");
