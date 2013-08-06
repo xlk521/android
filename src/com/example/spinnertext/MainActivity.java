@@ -1,5 +1,7 @@
 package com.example.spinnertext;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -16,22 +18,29 @@ import android.widget.AdapterView.OnItemSelectedListener;
 public class MainActivity extends Activity {
 
 	// 所有资源的图片(足球、篮球、排球) id的数组
-	int[] drawableIds = { R.drawable.football, R.drawable.basketball,R.drawable.volleyball };
+	int[] drawableIds = { R.drawable.football, R.drawable.basketball,R.drawable.volleyball ,R.drawable.volleyball};
 	// 所有资源字符串 (足球、篮球、排球) id的数组
 	int[] msgIds = { R.string.zp, R.string.lq, R.string.pq };
-
+	//模拟文字改变
+	private ArrayList<String> text = null;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//这用来设计抽取数据库中的数据来填写下面的列表
+		text = new ArrayList<String>();
+		text.add(0, "请选择");
+		text.add(1, "足球001");
+		text.add(2, "篮球002");
+		text.add(3, "排球003");
 		Spinner sp = (Spinner) findViewById(R.id.Spinner01);
 		//创建适配器
 		BaseAdapter ba = new BaseAdapter() {
 		
 			public int getCount() {
 				// 一共三个选项
-				return 3;
+				return text.size();
 			}
 		
 			public Object getItem(int position) {
@@ -58,7 +67,9 @@ public class MainActivity extends Activity {
 				ll.addView(ii);
 				// 初始化TextView
 				TextView tv = new TextView(MainActivity.this);
-				tv.setText(" " + getResources().getText(msgIds[position]));
+//				tv.setText(" " + getResources().getText(msgIds[position]));
+				//此处将使用string中的id替换为使用string列表的方式来显示数据
+				tv.setText(text.get(position));
 				tv.setTextColor(R.color.black);
 				tv.setTextSize(24);
 				ll.addView(tv);
