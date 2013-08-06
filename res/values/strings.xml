@@ -7,7 +7,7 @@
 	<string name="app_name">xh_spinner_test</string>
 	<string name="ys">您的爱好</string>
 	<string name="lq">篮球</string>
-	<string name="zp">足球</string>
+	<string name="zp">请选择</string>
 	<string name="pq">排球</string>
 
 </resources>
